@@ -1,0 +1,363 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MJB Services of Florida - Operations Audit</title><style>
+:root{--bg:#0d1117;--panel:#161b22;--ink:#e6edf3;--mut:#9aa7b4;--line:#2a3340;--accent:#2f81f7;
+  --good:#3fb950;--bad:#f85149;--gradF:#f85149;--gradD:#e8702a;--gradC:#d29922;--gradB:#3fb950;--gradA:#2ea043;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--mut);font-weight:600}
+header{padding:46px 0 28px;border-bottom:1px solid var(--line);background:radial-gradient(1200px 400px at 70% -10%,rgba(47,129,247,.18),transparent)}
+h1{font-size:30px;font-weight:800;margin:10px 0 6px;letter-spacing:-.01em}
+.sub{color:var(--mut);font-size:15px}
+.hero{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:center;margin:34px 0 8px}
+@media(max-width:760px){.hero{grid-template-columns:1fr}}
+.gradecard{border:1px solid var(--line);border-radius:18px;padding:26px;text-align:center;position:relative;overflow:hidden}
+.gc-F{background:linear-gradient(160deg,#2a1410,#1c2330)}.gc-D{background:linear-gradient(160deg,#2a1c10,#1c2330)}
+.gc-C{background:linear-gradient(160deg,#2a2410,#1c2330)}.gc-B{background:linear-gradient(160deg,#102a1a,#1c2330)}
+.bigletter{font-size:96px;font-weight:900;line-height:1;position:relative}
+.bl-F{color:var(--gradF);text-shadow:0 0 40px rgba(248,81,73,.45)}
+.bl-D{color:var(--gradD);text-shadow:0 0 40px rgba(232,112,42,.45)}
+.bl-C{color:var(--gradC);text-shadow:0 0 40px rgba(210,153,34,.45)}
+.score100{font-size:18px;color:var(--mut);margin-top:6px;position:relative}
+.heroread h2{font-size:21px;font-weight:800;margin-bottom:10px}
+.heroread p{color:var(--mut);font-size:15.5px}
+.heroread .tag{display:inline-block;margin-top:14px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--ink);background:var(--panel)}
+section{padding:34px 0;border-bottom:1px solid var(--line)}
+.h{font-size:13px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em;font-weight:700;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.row{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
+.rname{font-weight:600;font-size:15px}
+.bar{height:7px;background:#0b0f15;border-radius:99px;margin-top:9px;overflow:hidden}
+.fill{height:100%;border-radius:99px}
+.badge{font-weight:800;font-size:15px;min-width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#0d1117}
+.gF{background:var(--gradF)}.gD{background:var(--gradD)}.gC{background:var(--gradC)}.gB{background:var(--gradB);color:#06210f}.gA{background:var(--gradA);color:#06210f}
+.sc{font-size:12px;color:var(--mut);margin-top:3px}
+.flag{background:linear-gradient(160deg,#2a1410,#161b22);border:1px solid #6f2a1f;border-radius:14px;padding:20px 22px;margin-bottom:14px}
+.flag .lab{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--bad);font-weight:700;margin-bottom:8px}
+.win{background:linear-gradient(160deg,#0f2417,#161b22);border:1px solid #1f6f3a;border-radius:14px;padding:20px 22px;margin-bottom:14px}
+.win .lab{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--good);font-weight:700;margin-bottom:8px}
+.warn{background:linear-gradient(160deg,#2a2410,#161b22);border:1px solid #6f5a1f;border-radius:14px;padding:20px 22px;margin-bottom:14px}
+.warn .lab{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--gradC);font-weight:700;margin-bottom:8px}
+.flag p,.win p,.warn p{color:var(--mut);font-size:14.5px;margin-bottom:9px}
+.flag p:last-child,.win p:last-child,.warn p:last-child{margin-bottom:0}
+.flag b,.win b,.warn b{color:var(--ink)}
+.flag ul,.win ul,.warn ul{margin:0 0 9px 20px;color:var(--mut);font-size:14.5px}
+.flag li,.win li,.warn li{margin-bottom:6px}
+.code{background:#0b0f15;border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:12px 0;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12.5px;line-height:1.85;color:var(--mut);overflow-x:auto}
+.code .ph{color:#ff9d94;font-weight:700}.code .ok{color:#84e0a8;font-weight:700}.code .c{color:#5b6672}
+.cmp{width:100%;border-collapse:collapse;font-size:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.cmp th{text-align:left;padding:11px 14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);border-bottom:1px solid var(--line);font-weight:700}
+.cmp td{padding:11px 14px;border-bottom:1px solid var(--line);color:var(--mut);vertical-align:top}
+.cmp tr:last-child td{border-bottom:none}.cmp td b{color:var(--ink)}.cmp tr.you td{background:#241a12}
+.cmp .yes{color:var(--good);font-weight:700}.cmp .no{color:var(--bad);font-weight:700}
+.opp{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:760px){.opp{grid-template-columns:1fr}}
+.ocard{background:linear-gradient(160deg,#0f2417,#161b22);border:1px solid #1f6f3a;border-radius:14px;padding:20px;text-align:center}
+.ocard .lab{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--mut)}
+.ocard .big{font-size:30px;font-weight:900;color:var(--good);margin:8px 0 2px}
+.ocard .small{font-size:13px;color:var(--mut)}
+.oppnote{color:var(--mut);font-size:14px;margin-top:14px}.oppnote b{color:var(--ink)}
+.arrow{display:flex;align-items:center;justify-content:center;gap:18px;margin:6px 0 2px;flex-wrap:wrap}
+.pill{font-size:60px;font-weight:900;line-height:1}
+.pill.from-F{color:var(--gradF)}.pill.from-D{color:var(--gradD)}.pill.from-C{color:var(--gradC)}
+.pill.to{color:var(--gradA)}
+.pilllab{font-size:12px;color:var(--mut);text-align:center;text-transform:uppercase;letter-spacing:.1em}
+.ar{font-size:34px;color:var(--mut)}
+ul.road{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:760px){ul.road{grid-template-columns:1fr}}
+ul.road li{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:11px 14px;font-size:14.5px}
+.road2 li{border-left-color:var(--good)}
+.cta{text-align:center;padding:40px 0 56px}
+.cta h2{font-size:22px;font-weight:800;margin-bottom:8px}
+.cta p{color:var(--mut);font-size:15px}
+footer{color:var(--mut);font-size:12.5px;text-align:center;padding:22px 0 40px;line-height:1.7}
+.gscale{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 26px 20px;margin-top:16px}
+.gscale .gtitle{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--mut);font-weight:700;margin-bottom:26px;text-align:center}
+.gtrack{position:relative;height:14px;border-radius:8px;background:linear-gradient(90deg,#f85149 0%,#f85149 18%,#e3833c 34%,#d4a72c 52%,#7ec46a 74%,#3fb950 100%);margin:0 4px}
+.gmark{position:absolute;top:-46px;transform:translateX(-50%);text-align:center;white-space:nowrap}
+.gmark .gm-lab{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);font-weight:700}
+.gmark .gm-val{font-size:19px;font-weight:900;line-height:1.15}
+.gmark:after{content:"";position:absolute;left:50%;top:100%;width:2px;height:22px;transform:translateX(-50%);background:currentColor;opacity:.75}
+.gmark.now{color:var(--bad)}.gmark.now .gm-val{color:var(--bad)}
+.gmark.proj{color:var(--good)}.gmark.proj .gm-val{color:var(--good)}
+.gmark.proj{top:auto;bottom:-52px}
+.gmark.proj:after{top:auto;bottom:100%}
+.gdot{position:absolute;top:50%;width:16px;height:16px;border-radius:50%;transform:translate(-50%,-50%);border:3px solid #0d1117}
+.gdot.now{background:var(--bad)}.gdot.proj{background:var(--good)}
+.gticks{display:flex;justify-content:space-between;margin:66px 4px 0;font-size:11px;letter-spacing:.08em;color:var(--mut);font-weight:700}
+@media(max-width:620px){.gmark .gm-lab{font-size:9px}.gmark .gm-val{font-size:16px}}
+</style></head><body>
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Operations &amp; Website Audit</div>
+    <h1>MJB Services of Florida &mdash; Tampa</h1>
+    <div class="sub">Prepared for Geoff Byam &middot; 10 September 2026 &middot; AG1 Consulting</div>
+
+    <div class="hero">
+      <div class="gradecard gc-F">
+        <div class="bigletter bl-F" style="font-size:56px">1,000</div>
+        <div class="score100">hours a year on admin</div>
+      </div>
+      <div class="heroread">
+        <h2>You are not short of work. You are short of yourself.</h2>
+        <p>Twenty hours a week of admin is <b>roughly a thousand hours a year</b> &mdash; half a
+        full-time role, done by the licensed contractor whose time is worth the most in the business.</p>
+        <p>You told our team you cannot take on more work because you do not have the people. <b>You
+        already have half a person. They are just doing paperwork.</b></p>
+        <div class="tag">Tampa, FL &middot; licence CAC1813632 &middot; 20+ years &middot; AC, refrigeration, ice machines</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="h">This Is Not A Lead Generation Audit</div>
+    <div class="warn">
+      <div class="lab">Because you did not say you needed leads</div>
+      <p>You told Paige three things: <b>you are good on the work side</b>, <b>you do not have the
+      employees to take on more</b>, and <b>you spend twenty hours a week on admin with no CRM in
+      place</b>.</p>
+      <p>So this document is not about getting you more phone calls. <b>More phone calls would make
+      your week worse, not better.</b> It is about the thousand hours, and about the one kind of work
+      that grows revenue without needing another van on the road.</p>
+      <p>There are findings about the website further down, because it is genuinely costing you.
+      <b>But the website is the second problem.</b></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="h">Finding 1 &mdash; A Thousand Hours, And What They Cost</div>
+    <div class="opp">
+      <div class="ocard"><div class="lab">Admin per week</div><div class="big" style="color:var(--bad)">20 hrs</div><div class="small">your own figure</div></div>
+      <div class="ocard"><div class="lab">Per year, at 50 weeks</div><div class="big" style="color:var(--bad)">1,000 hrs</div><div class="small">half a full-time role</div></div>
+      <div class="ocard"><div class="lab">CRM in place</div><div class="big" style="color:var(--bad)">None</div><div class="small">you were looking at it for January</div></div>
+    </div>
+    <div class="flag">
+      <div class="lab">The arithmetic nobody has put in front of you</div>
+      <p>A thousand hours is <b>twenty-five working weeks</b>. It is the single largest block of
+      capacity in your business, and it is being spent by the person who holds the licence.</p>
+      <p>We do not know your hourly rate and we are not going to guess it. <b>But you do</b> &mdash; so
+      multiply it out before the call. Whatever number you get is what the admin is costing you a year,
+      and it is almost certainly more than any software or any help would cost to fix it.</p>
+      <p>And note what it is <b>not</b> costing you: it is not costing you customers. You have work.
+      <b>It is costing you the ability to take the work you already have.</b></p>
+    </div>
+    <div class="warn">
+      <div class="lab">What twenty hours usually turns out to be</div>
+      <p>In this trade, that block is almost always the same five things:</p>
+      <ul>
+        <li><b>Scheduling and rescheduling</b> &mdash; phone tag with customers to find a slot</li>
+        <li><b>Quoting</b> &mdash; writing the same quote again in a slightly different order</li>
+        <li><b>Invoicing and chasing payment</b> &mdash; the one everybody leaves until Sunday</li>
+        <li><b>Job records</b> &mdash; what was fitted, what part, which machine, on which visit</li>
+        <li><b>Remembering</b> &mdash; who is due a service, whose ice machine was struggling last time</li>
+      </ul>
+      <p><b>Every one of those is a solved problem</b>, and none of the solutions require you to hire
+      anybody. Which of the five is actually eating your week is the first question for the call.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="h">Finding 2 &mdash; You Sell Repairs. Your Competitors Sell Contracts.</div>
+    <table class="cmp">
+      <tr><th>Firm</th><th>Maintenance agreements / preventive contracts?</th></tr>
+      <tr><td><b>All Temp Refrigeration</b></td><td class="yes">Yes &mdash; leads with a "preventative maintenance mindset"</td></tr>
+      <tr><td><b>SSI Services</b></td><td class="yes">Yes &mdash; recommends deep clean every 3&ndash;6 months, quarterly for high-volume kitchens</td></tr>
+      <tr><td><b>FMBS</b></td><td class="yes">Yes &mdash; "customized comprehensive preventive maintenance packages"</td></tr>
+      <tr><td><b>The Ice Doctors (S&amp;W Refrigeration)</b></td><td class="yes">Yes &mdash; quarterly PM, plus machine leasing</td></tr>
+      <tr><td><b>Superior AC &amp; Refrigeration</b></td><td class="yes">Yes &mdash; "several types of preventive maintenance contracts"</td></tr>
+      <tr><td><b>24 Hour Refrigeration</b></td><td class="yes">Yes &mdash; preventive maintenance and 24/7 response</td></tr>
+      <tr class="you"><td><b>MJB Services</b></td><td class="no"><b>Not mentioned anywhere on your website</b></td></tr>
+    </table>
+    <div class="flag">
+      <div class="lab">This is the finding that solves your actual problem</div>
+      <p>A maintenance agreement is <b>the only kind of growth that does not need another employee</b>,
+      because you choose when the work happens.</p>
+      <ul>
+        <li><b>It is scheduled.</b> You plan it into the quiet weeks instead of reacting to whoever rings first.</li>
+        <li><b>It is the same customer.</b> No acquisition cost, no quoting, no chasing.</li>
+        <li><b>It is recurring.</b> Revenue that arrives whether or not anything breaks.</li>
+        <li><b>It cuts the emergencies.</b> Serviced machines fail less, and emergencies are what wreck a week.</li>
+        <li><b>It sells the repairs anyway.</b> You are inside the building twice a year, looking at the equipment.</li>
+      </ul>
+      <p>For <b>ice machines</b> this is close to a duty of care. They are food-contact equipment in
+      commercial kitchens, they need cleaning on a schedule, and the operator often does not know that
+      until something goes wrong. <b>You have eleven mentions of ice machines on your site and no
+      mention of a service plan.</b></p>
+      <p>And it connects straight back to Finding 1: <b>a contract book is exactly what a CRM is for.</b>
+      Who is due, when, what was done last time, and a reminder that goes out without you remembering.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="h">Finding 3 &mdash; Your Website Is Five Pages And Two Are Called "Blank"</div>
+    <div class="code">
+Your complete website, from your own published sitemap, 10 September 2026:
+
+  /                        <span class="ok">home</span>
+  /ourwork                 <span class="ok">gallery</span>
+  <span class="ph">/get-a-qoute             &larr; misspelled. "qoute", not "quote"</span>
+  <span class="ph">/blank                   &larr; live and public</span>
+  <span class="ph">/blank-1                 &larr; live and public</span>
+
+  Total pages                                 <span class="ph">5</span>
+  Pages named "blank"                         <span class="ph">2</span>
+  Pages for AC, refrigeration or ice machines <span class="ph">0</span>
+  Pages naming Tampa, Brandon or Clearwater   <span class="ph">0</span>
+    </div>
+    <div class="flag">
+      <div class="lab">Three separate problems in five pages</div>
+      <p><b>Two pages are called "blank" and "blank-1."</b> They are published, in your sitemap, and
+      being offered to Google. They are what a website builder leaves behind when a page gets started
+      and never finished.</p>
+      <p><b>Your quote page URL is misspelled.</b> It reads <code>get-a-qoute</code>. Nobody will
+      notice consciously &mdash; but it is the page where people ask you for money, and it is the one
+      address you would ever type out or put on a van.</p>
+      <p><b>You have three distinct businesses and no page for any of them.</b> Air conditioning,
+      commercial refrigeration and ice machines are three different customers with three different
+      problems. They are all on one homepage.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="h">Finding 4 &mdash; Nothing Is Measured, And The Email Is A Yahoo Address</div>
+    <table class="cmp">
+      <tr><th>What we found</th><th>Why it matters</th></tr>
+      <tr><td><b>No analytics of any kind</b></td><td class="no">No Google Analytics, no Tag Manager, no Ads tag, no Meta pixel. Nothing records a visit or an enquiry.</td></tr>
+      <tr><td><b>Email is mjbs1@yahoo.com</b></td><td class="no">You own <b>mjbservices.net</b>. A Yahoo address on a commercial quote reads as smaller and less permanent than a 20-year licensed contractor is. Restaurant and facilities managers notice.</td></tr>
+      <tr><td><b>No reviews or rating shown</b></td><td class="no">None on the site. Not assessed whether you have them elsewhere &mdash; worth discussing.</td></tr>
+      <tr><td><b>Licence CAC1813632 shown</b></td><td class="yes">Good &mdash; and worth putting far more prominently than it currently sits.</td></tr>
+      <tr><td><b>No named people</b></td><td>Twenty years and nobody's name on the site. For commercial clients, who they are dealing with matters.</td></tr>
+      <tr><td><b>CFESA or manufacturer certifications</b></td><td>Not assessed &mdash; none shown. Competitors state theirs. Worth knowing what you hold.</td></tr>
+    </table>
+    <div class="warn">
+      <div class="lab">One thing to check yourself, today</div>
+      <p>Public records show your Florida contractor licence <b>CAC1813632</b> with an expiration date
+      of <b>31 August 2026</b>. That date has passed. <b>This is very likely already renewed and simply
+      not reflected in the record we saw</b> &mdash; renewals often lag &mdash; but it takes two
+      minutes to confirm on the DBPR portal and it is worth being certain. <b>We are flagging it, not
+      asserting it.</b></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="h">What Is Genuinely Good</div>
+    <div class="win">
+      <div class="lab">The business is the strong part</div>
+      <ul>
+        <li><b>Over twenty years in the trade</b>, and an LLC registered in Florida since 2014 with an active status.</li>
+        <li><b>A state contractor licence</b> &mdash; CAC1813632.</li>
+        <li><b>Three complementary trades under one roof</b> &mdash; AC, commercial refrigeration and ice machines. That combination is genuinely useful to a restaurant or a facilities manager who would otherwise call three firms.</li>
+        <li><b>Ice machines are a specialism</b>, not an add-on. They are food-contact equipment, they need scheduled cleaning, and plenty of AC firms will not touch them.</li>
+        <li><b>Residential and commercial</b> both served.</li>
+        <li><b>Real photographs of real work</b> on your gallery page.</li>
+        <li><b>More work than you can take.</b> That is the position most contractors are trying to reach.</li>
+        <li><b>You already identified the problem yourself</b> and were planning to look at a CRM in January. This document is largely agreeing with you.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="h">The Scorecard</div>
+    <div class="grid">
+      <div class="row"><div><div class="rname">Admin burden</div><div class="sc">20 hrs/week, ~1,000 hrs/year, on the licence holder</div></div><div class="badge gF">F</div></div>
+      <div class="row"><div><div class="rname">CRM / job management</div><div class="sc">None in place</div></div><div class="badge gF">F</div></div>
+      <div class="row"><div><div class="rname">Maintenance agreements offered</div><div class="sc">Every competitor sells them; you mention none</div></div><div class="badge gF">F</div></div>
+      <div class="row"><div><div class="rname">Analytics &amp; tracking</div><div class="sc">Nothing installed at all</div></div><div class="badge gF">F</div></div>
+      <div class="row"><div><div class="rname">Site depth</div><div class="sc">5 pages, two named "blank"</div></div><div class="badge gF">F</div></div>
+      <div class="row"><div><div class="rname">Service pages</div><div class="sc">Three trades, no page for any</div></div><div class="badge gF">F</div></div>
+      <div class="row"><div><div class="rname">Local pages</div><div class="sc">Tampa, Brandon, Riverview, Clearwater named; none has a page</div></div><div class="badge gF">F</div></div>
+      <div class="row"><div><div class="rname">Email professionalism</div><div class="sc">yahoo.com despite owning the domain</div></div><div class="badge gD">D&minus;</div></div>
+      <div class="row"><div><div class="rname">Quote page URL</div><div class="sc">Misspelled &mdash; "qoute"</div></div><div class="badge gD">D</div></div>
+      <div class="row"><div><div class="rname">Reviews shown</div><div class="sc">None on site</div></div><div class="badge gD">D</div></div>
+      <div class="row"><div><div class="rname">Licence displayed</div><div class="sc">CAC1813632 stated</div></div><div class="badge gB">B</div></div>
+      <div class="row"><div><div class="rname">Trade combination</div><div class="sc">AC + refrigeration + ice machines under one contractor</div></div><div class="badge gA">A&minus;</div></div>
+      <div class="row"><div><div class="rname">Tenure</div><div class="sc">20+ years, LLC active since 2014</div></div><div class="badge gA">A&minus;</div></div>
+      <div class="row"><div><div class="rname">Demand</div><div class="sc">More work than capacity &mdash; the good problem</div></div><div class="badge gA">A</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="h">What We Would Do, In Order</div>
+    <ul class="road">
+      <li><b>1.</b> Work out which of the five admin tasks is actually eating the twenty hours. Everything else follows from that answer.</li>
+      <li><b>2.</b> Put a CRM in that does scheduling, quoting, invoicing and job history in one place &mdash; and set it up <i>for you</i>, rather than handing you a login.</li>
+      <li><b>3.</b> Build a maintenance agreement offer &mdash; tiers, pricing, and what is included &mdash; for ice machines first, then refrigeration.</li>
+      <li><b>4.</b> Automate the service reminders, so the contract book runs without you remembering it.</li>
+    </ul>
+    <ul class="road road2" style="margin-top:12px">
+      <li><b>5.</b> Fix the website: delete the two "blank" pages, correct the quote URL, add a page each for AC, refrigeration and ice machines.</li>
+      <li><b>6.</b> Move email onto mjbservices.net.</li>
+      <li><b>7.</b> Put the licence, the twenty years and your reviews where a commercial client sees them.</li>
+      <li><b>8.</b> Install analytics &mdash; free &mdash; so anything after this can actually be judged.</li>
+    </ul>
+    <p class="oppnote"><b>Note the order.</b> Items 1 to 4 give you back capacity and revenue without a
+    single new customer. Items 5 to 8 are the website, and they matter &mdash; but they matter second,
+    because you do not currently want more calls.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="h">Projected Grade After Build</div>
+    <div class="arrow">
+      <div><div class="pill from-F">F</div><div class="pilllab">32 / 100 today</div></div>
+      <div class="ar">&rarr;</div>
+      <div><div class="pill to">A</div><div class="pilllab">88 / 100 projected</div></div>
+    </div>
+    <p class="oppnote" style="text-align:center">Projected, not promised. It projects the fourteen
+    scorecard rows above &mdash; things on your own website and in your own operation that we can see
+    and change. <b>It is not a projection of revenue, jobs or hours saved and should not be read as
+    one.</b></p>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap">
+    <h2>You do not need more customers. You need your Tuesdays back.</h2>
+    <p>A thousand hours a year, and a contract book that grows revenue without another van.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    Prepared by Andrei Givero &middot; AG1 Consulting &middot; 10 September 2026<br><br>
+    For MJB Services of Florida LLC, 7028 W Waters Ave, Tampa FL 33634 &middot; Florida document number
+    L14000094158. The entity name, document number, active status and principal address are taken from
+    the Florida Division of Corporations public record; the contractor licence CAC1813632 and its
+    stated expiration date of 31 August 2026 are as shown in public licensing records, <b>which we have
+    not verified directly with the DBPR and which the document explicitly flags as likely already
+    renewed.</b> Website findings were read from the company's own live site and XML sitemap on 10
+    September 2026 and are reproducible &mdash; the five-page list came from the published sitemap, and
+    the served page source was searched for analytics and advertising identifiers. <b>Because the site
+    renders content with JavaScript, a tag injected later would not always appear in the served source;
+    this would be verified directly before any work is undertaken.</b> The figures of twenty hours a
+    week of admin, the absence of a CRM, the lack of employees to take on more work and the intention
+    to look at a CRM in January are <b>as stated by Geoff Byam to our team and have not been
+    independently verified</b>; the figure of 1,000 hours a year is twenty multiplied by fifty weeks
+    and nothing more. Statements about competitors' maintenance offerings are taken from those
+    companies' own published websites and public listings; <b>we have not seen inside any competitor's
+    accounts and make no claim about their revenue, results or the quality of their work.</b> Items
+    marked "not assessed" are deliberately blank. <b>No revenue, job volume, hourly rate, cost saving or
+    return figure is stated, estimated or forecast anywhere in this document</b>, and no claim is made
+    about what any work described here would produce. Company names are used for identification only.
+  </div>
+</footer>
+</body></html>
