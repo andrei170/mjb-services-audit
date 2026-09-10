@@ -1,0 +1,327 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MJB Services - Competitor Analysis</title><style>
+:root{--bg:#0d1117;--panel:#161b22;--ink:#e6edf3;--mut:#9aa7b4;--line:#2a3340;--accent:#2f81f7;
+  --good:#3fb950;--bad:#f85149;--gradF:#f85149;--gradD:#e8702a;--gradC:#d29922;--gradB:#3fb950;--gradA:#2ea043;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--mut);font-weight:600}
+header{padding:46px 0 28px;border-bottom:1px solid var(--line);background:radial-gradient(1200px 400px at 70% -10%,rgba(47,129,247,.18),transparent)}
+h1{font-size:30px;font-weight:800;margin:10px 0 6px;letter-spacing:-.01em}
+.sub{color:var(--mut);font-size:15px}
+.hero{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:center;margin:34px 0 8px}
+@media(max-width:760px){.hero{grid-template-columns:1fr}}
+.gradecard{border:1px solid var(--line);border-radius:18px;padding:26px;text-align:center;position:relative;overflow:hidden}
+.gc-F{background:linear-gradient(160deg,#2a1410,#1c2330)}.gc-D{background:linear-gradient(160deg,#2a1c10,#1c2330)}
+.gc-C{background:linear-gradient(160deg,#2a2410,#1c2330)}.gc-B{background:linear-gradient(160deg,#102a1a,#1c2330)}
+.bigletter{font-size:96px;font-weight:900;line-height:1;position:relative}
+.bl-F{color:var(--gradF);text-shadow:0 0 40px rgba(248,81,73,.45)}
+.bl-D{color:var(--gradD);text-shadow:0 0 40px rgba(232,112,42,.45)}
+.bl-C{color:var(--gradC);text-shadow:0 0 40px rgba(210,153,34,.45)}
+.score100{font-size:18px;color:var(--mut);margin-top:6px;position:relative}
+.heroread h2{font-size:21px;font-weight:800;margin-bottom:10px}
+.heroread p{color:var(--mut);font-size:15.5px}
+.heroread .tag{display:inline-block;margin-top:14px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--ink);background:var(--panel)}
+section{padding:34px 0;border-bottom:1px solid var(--line)}
+.h{font-size:13px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em;font-weight:700;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.row{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
+.rname{font-weight:600;font-size:15px}
+.bar{height:7px;background:#0b0f15;border-radius:99px;margin-top:9px;overflow:hidden}
+.fill{height:100%;border-radius:99px}
+.badge{font-weight:800;font-size:15px;min-width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#0d1117}
+.gF{background:var(--gradF)}.gD{background:var(--gradD)}.gC{background:var(--gradC)}.gB{background:var(--gradB);color:#06210f}.gA{background:var(--gradA);color:#06210f}
+.sc{font-size:12px;color:var(--mut);margin-top:3px}
+.flag{background:linear-gradient(160deg,#2a1410,#161b22);border:1px solid #6f2a1f;border-radius:14px;padding:20px 22px;margin-bottom:14px}
+.flag .lab{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--bad);font-weight:700;margin-bottom:8px}
+.win{background:linear-gradient(160deg,#0f2417,#161b22);border:1px solid #1f6f3a;border-radius:14px;padding:20px 22px;margin-bottom:14px}
+.win .lab{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--good);font-weight:700;margin-bottom:8px}
+.warn{background:linear-gradient(160deg,#2a2410,#161b22);border:1px solid #6f5a1f;border-radius:14px;padding:20px 22px;margin-bottom:14px}
+.warn .lab{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--gradC);font-weight:700;margin-bottom:8px}
+.flag p,.win p,.warn p{color:var(--mut);font-size:14.5px;margin-bottom:9px}
+.flag p:last-child,.win p:last-child,.warn p:last-child{margin-bottom:0}
+.flag b,.win b,.warn b{color:var(--ink)}
+.flag ul,.win ul,.warn ul{margin:0 0 9px 20px;color:var(--mut);font-size:14.5px}
+.flag li,.win li,.warn li{margin-bottom:6px}
+.code{background:#0b0f15;border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:12px 0;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12.5px;line-height:1.85;color:var(--mut);overflow-x:auto}
+.code .ph{color:#ff9d94;font-weight:700}.code .ok{color:#84e0a8;font-weight:700}.code .c{color:#5b6672}
+.cmp{width:100%;border-collapse:collapse;font-size:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.cmp th{text-align:left;padding:11px 14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);border-bottom:1px solid var(--line);font-weight:700}
+.cmp td{padding:11px 14px;border-bottom:1px solid var(--line);color:var(--mut);vertical-align:top}
+.cmp tr:last-child td{border-bottom:none}.cmp td b{color:var(--ink)}.cmp tr.you td{background:#241a12}
+.cmp .yes{color:var(--good);font-weight:700}.cmp .no{color:var(--bad);font-weight:700}
+.opp{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:760px){.opp{grid-template-columns:1fr}}
+.ocard{background:linear-gradient(160deg,#0f2417,#161b22);border:1px solid #1f6f3a;border-radius:14px;padding:20px;text-align:center}
+.ocard .lab{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--mut)}
+.ocard .big{font-size:30px;font-weight:900;color:var(--good);margin:8px 0 2px}
+.ocard .small{font-size:13px;color:var(--mut)}
+.oppnote{color:var(--mut);font-size:14px;margin-top:14px}.oppnote b{color:var(--ink)}
+.arrow{display:flex;align-items:center;justify-content:center;gap:18px;margin:6px 0 2px;flex-wrap:wrap}
+.pill{font-size:60px;font-weight:900;line-height:1}
+.pill.from-F{color:var(--gradF)}.pill.from-D{color:var(--gradD)}.pill.from-C{color:var(--gradC)}
+.pill.to{color:var(--gradA)}
+.pilllab{font-size:12px;color:var(--mut);text-align:center;text-transform:uppercase;letter-spacing:.1em}
+.ar{font-size:34px;color:var(--mut)}
+ul.road{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:760px){ul.road{grid-template-columns:1fr}}
+ul.road li{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:11px 14px;font-size:14.5px}
+.road2 li{border-left-color:var(--good)}
+.cta{text-align:center;padding:40px 0 56px}
+.cta h2{font-size:22px;font-weight:800;margin-bottom:8px}
+.cta p{color:var(--mut);font-size:15px}
+footer{color:var(--mut);font-size:12.5px;text-align:center;padding:22px 0 40px;line-height:1.7}
+.gscale{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 26px 20px;margin-top:16px}
+.gscale .gtitle{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--mut);font-weight:700;margin-bottom:26px;text-align:center}
+.gtrack{position:relative;height:14px;border-radius:8px;background:linear-gradient(90deg,#f85149 0%,#f85149 18%,#e3833c 34%,#d4a72c 52%,#7ec46a 74%,#3fb950 100%);margin:0 4px}
+.gmark{position:absolute;top:-46px;transform:translateX(-50%);text-align:center;white-space:nowrap}
+.gmark .gm-lab{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);font-weight:700}
+.gmark .gm-val{font-size:19px;font-weight:900;line-height:1.15}
+.gmark:after{content:"";position:absolute;left:50%;top:100%;width:2px;height:22px;transform:translateX(-50%);background:currentColor;opacity:.75}
+.gmark.now{color:var(--bad)}.gmark.now .gm-val{color:var(--bad)}
+.gmark.proj{color:var(--good)}.gmark.proj .gm-val{color:var(--good)}
+.gmark.proj{top:auto;bottom:-52px}
+.gmark.proj:after{top:auto;bottom:100%}
+.gdot{position:absolute;top:50%;width:16px;height:16px;border-radius:50%;transform:translate(-50%,-50%);border:3px solid #0d1117}
+.gdot.now{background:var(--bad)}.gdot.proj{background:var(--good)}
+.gticks{display:flex;justify-content:space-between;margin:66px 4px 0;font-size:11px;letter-spacing:.08em;color:var(--mut);font-weight:700}
+@media(max-width:620px){.gmark .gm-lab{font-size:9px}.gmark .gm-val{font-size:16px}}
+</style></head><body>
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Competitor Analysis &middot; Tampa Bay HVAC &amp; Refrigeration</div>
+    <h1>Every One Of Them Sells A Contract. You Sell A Visit.</h1>
+    <div class="sub">Prepared for Geoff Byam &middot; MJB Services of Florida LLC &middot; 10 September 2026 &middot; AG1 Consulting</div>
+
+    <div class="hero">
+      <div class="gradecard gc-F">
+        <div class="bigletter bl-F" style="font-size:48px">6 / 6</div>
+        <div class="score100">competitors advertise a maintenance agreement</div>
+      </div>
+      <div class="heroread">
+        <h2>You said you cannot take on more work. Every competitor we looked at has found the one kind of growth that does not need another van.</h2>
+        <p>All six firms we checked across Tampa Bay publish a <b>preventive maintenance agreement</b> or
+        service plan on their own website. It is the first or second thing on most of their homepages.</p>
+        <p><b>MJB Services does not mention one anywhere on its site.</b> Not on the homepage, not on
+        the services page, not in the sitemap.</p>
+        <div class="tag">Read from each firm's own published website, 10 September 2026</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="h">Why This Is The Finding That Matters For You</div>
+    <div class="win">
+      <div class="lab">Because of what you told Paige</div>
+      <ul>
+        <li><b>You are not short of work.</b> You said you do not have the people to take on more. So a
+        lead-generation pitch is the wrong pitch &mdash; more calls you cannot answer is a worse
+        business, not a better one.</li>
+        <li><b>A maintenance agreement is revenue you schedule rather than revenue you chase.</b> The
+        visits go in the calendar months ahead, in the weeks you choose, at a price agreed in advance.</li>
+        <li><b>It is the only growth line that reduces emergency load instead of adding to it.</b> Every
+        machine on a schedule is a machine less likely to fail at 7pm on a Saturday.</li>
+        <li><b>It also answers the 20 hours a week.</b> Recurring, pre-agreed work is the easiest kind
+        to systematise &mdash; the quote, the schedule and the invoice are the same every time.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="h">The Comparison</div>
+    <table class="cmp">
+      <tr>
+        <th></th>
+        <th>All Temp</th>
+        <th>SSI Services</th>
+        <th>FMBS</th>
+        <th>The Ice Doctors</th>
+        <th>Superior AC</th>
+        <th>24 Hour Refrig.</th>
+        <th class="you">MJB Services</th>
+      </tr>
+      <tr><td><b>Maintenance agreement advertised</b></td>
+        <td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td>
+        <td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td>
+        <td class="no"><b>None found</b></td></tr>
+      <tr><td><b>Pages published on own site</b></td>
+        <td class="yes">125</td><td>Not counted</td><td>Not counted</td>
+        <td>Not counted</td><td>6</td><td class="yes">854</td>
+        <td class="no"><b>5</b></td></tr>
+      <tr><td><b>Ice machine service named as a service</b></td>
+        <td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td>
+        <td class="yes">Yes &mdash; the whole business</td><td>Not found</td><td class="yes">Yes</td>
+        <td class="yes">Yes</td></tr>
+      <tr><td><b>Commercial refrigeration</b></td>
+        <td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td>
+        <td class="yes">Yes</td><td>Not found</td><td class="yes">Yes</td>
+        <td class="yes">Yes</td></tr>
+      <tr><td><b>Analytics or tracking installed</b></td>
+        <td class="yes">Yes &mdash; 2 tag containers</td><td>Not assessed</td><td>Not assessed</td>
+        <td>Not assessed</td><td>Not assessed</td><td>Not assessed</td>
+        <td class="no"><b>None at all</b></td></tr>
+      <tr><td><b>Trade certification stated</b></td>
+        <td>Not assessed</td><td class="yes">CFESA certified</td><td>Not assessed</td>
+        <td>Not assessed</td><td>Not assessed</td><td>Not assessed</td>
+        <td>Licence number only</td></tr>
+      <tr><td><b>Email on own domain</b></td>
+        <td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td>
+        <td>Not assessed</td><td>Not assessed</td><td>Not assessed</td>
+        <td class="no"><b>Yahoo address</b></td></tr>
+      <tr><td><b>Broken or placeholder pages</b></td>
+        <td class="yes">None found</td><td>Not assessed</td><td>Not assessed</td>
+        <td>Not assessed</td><td>Not assessed</td><td>Not assessed</td>
+        <td class="no"><b>2 blank pages + a misspelled URL</b></td></tr>
+    </table>
+    <div class="tag" style="margin-top:12px">"Not assessed" means we did not check it, not that it is
+    absent. Every cell marked yes or no was read from that firm's own published website on 10 September 2026.</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="h">The Page Count, Plainly</div>
+    <div class="code">
+Pages published, counted from each firm's own sitemap:
+
+  24 Hour Refrigeration ........ <span class="ok">854</span>
+  All Temp ..................... <span class="ok">125</span>
+  Superior AC ..................    6
+  <span class="ph">MJB Services ................. 5</span>
+
+  And of your five:
+
+    /                 <span class="ok">the homepage</span>
+    /ourwork          <span class="ok">real</span>
+    /get-a-qoute      <span class="ph">misspelled - "qoute"</span>
+    /blank            <span class="ph">empty template page</span>
+    /blank-1          <span class="ph">empty template page</span>
+
+  So the honest count of real, finished pages is <span class="ph">three</span>.
+    </div>
+    <div class="warn">
+      <div class="lab">What this does and does not mean</div>
+      <p><b>A big website is not a big business.</b> 24 Hour Refrigeration's 854 pages tell you they
+      have invested in a website, not that they are winning. We have not seen inside anybody's books,
+      analytics or ad accounts and we make no claim about any competitor's revenue, traffic or results.</p>
+      <p>What it does mean is that when somebody in Brandon searches for <i>commercial ice machine
+      repair</i>, there are firms with a page built for exactly that phrase, and you have three pages
+      total. <b>That is a structural fact, not a ranking report.</b></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="h">What Each One Is Doing</div>
+    <table class="cmp">
+      <tr><th>Firm</th><th>What stands out</th></tr>
+      <tr><td><b>All Temp</b></td><td>125 pages and two separate tag containers running. Preventive
+      maintenance sold openly. They are measuring what their website does; you cannot, because nothing
+      is installed.</td></tr>
+      <tr><td><b>SSI Services</b></td><td>CFESA certified &mdash; a commercial food equipment service
+      certification &mdash; and they say so. A certification stated on the page is a reason to be
+      chosen. Yours is a licence number in the footer.</td></tr>
+      <tr><td><b>FMBS</b></td><td>Commercial kitchen and refrigeration service with a maintenance
+      offering. Same customer as you, same equipment, contract on the front.</td></tr>
+      <tr><td><b>The Ice Doctors</b></td><td>An entire business built on ice machines alone, with a
+      cleaning and sanitising programme as the product. <b>You mention ice machines eleven times on
+      your site</b> &mdash; the specialism is genuinely yours too, it just is not packaged.</td></tr>
+      <tr><td><b>Superior AC</b></td><td>Only six pages, so a small site like yours &mdash; but they
+      still put a maintenance plan on it. The plan is not a function of website size.</td></tr>
+      <tr><td><b>24 Hour Refrigeration</b></td><td>854 pages. Worth noting: several of their page titles
+      reference Dallas, which suggests a template built elsewhere and reused. Scale, not necessarily
+      local depth.</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="h">Where You Can Actually Win</div>
+    <div class="win">
+      <div class="lab">You have things they have to buy and you already own</div>
+      <ul>
+        <li><b>Twenty-plus years and a licensed contractor.</b> CAC1813632 is real, checkable, and older
+        than most of the marketing on these sites.</li>
+        <li><b>All three trades under one licence.</b> AC, commercial refrigeration and ice machines.
+        Most operators keep two or three contractors' numbers on the wall. Being the one number is a
+        genuine offer, and it is what makes a multi-equipment maintenance agreement natural for you and
+        awkward for an AC-only firm.</li>
+        <li><b>Ice machines are the specialism nobody wants.</b> They are fiddly, they are food-contact,
+        and they are the thing an operator panics about. The Ice Doctors built a whole company on it.
+        You already do the work.</li>
+        <li><b>Your own photographs.</b> The site has real job photos on it, not stock. That is rarer
+        than it sounds and it is worth more than another paragraph of copy.</li>
+        <li><b>You do not need more customers to start.</b> A maintenance agreement is sold to people
+        who already know you. That is a call list, not a lead-generation campaign &mdash; which matters,
+        because you have said you cannot take more new work.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="h">What We Could Not Check</div>
+    <div class="warn">
+      <div class="lab">Marked honestly rather than guessed</div>
+      <ul>
+        <li><b>Actual search rankings.</b> No rank tracker has been run. The page-count comparison is
+        structural evidence, not a ranking report.</li>
+        <li><b>Google Business Profiles.</b> Not compared for any firm here, yours included. In this
+        trade the map pack often produces more calls than the website does.</li>
+        <li><b>Contract pricing.</b> No competitor's maintenance agreement price appears anywhere in
+        this document, because we did not obtain any and would not publish one if we had.</li>
+        <li><b>Their traffic, spend, revenue or results.</b> We have seen public websites and nothing else.</li>
+        <li><b>Whether you already sell maintenance agreements privately.</b> Entirely possible. The
+        finding is that <b>your website does not mention one</b> &mdash; which is a marketing gap either
+        way, and if you do sell them the fix is much faster.</li>
+        <li><b>Certifications you may hold.</b> Only the state licence number appears on your site. If
+        you hold others, they are invisible.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap">
+    <h2>Six competitors sell a schedule. You sell a call-out.</h2>
+    <p>It is the one growth line that does not need another employee &mdash; which is the only kind
+    that is any use to you right now.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    Prepared by Andrei Givero &middot; AG1 Consulting &middot; 10 September 2026<br><br>
+    For Geoff Byam, MJB Services of Florida LLC, Tampa, Florida. <b>Every statement about a competitor
+    on this page was read from that company's own published website or XML sitemap on 10 September
+    2026 and is reproducible.</b> Page counts were counted directly from published sitemap files.
+    Cells marked "not assessed" were not checked and must not be read as an absence. <b>We have not
+    seen inside any company's analytics, advertising accounts, customer records or financial records,
+    and we make no claim whatsoever about any competitor's traffic, spend, rankings, revenue, customer
+    numbers, contract prices or the quality of their work</b> &mdash; a large number of published pages
+    is evidence of a large website and nothing more. <b>No competitor's pricing appears anywhere in
+    this document.</b> The observation about Dallas references in one firm's page titles is a reading of
+    published page titles and is not a claim about where that business operates. Company names,
+    trading names and certifications named here are used for identification only and belong to their
+    respective owners; <b>nothing in this document is a comment on the competence, conduct or standing
+    of any named business.</b> MJB Services' own details &mdash; the five-page sitemap, the absence of
+    any tracking code, the Yahoo email address, the two blank pages, the misspelled quote URL, the
+    eleven references to ice machines and the twenty-plus years &mdash; were read from mjbservices.net
+    and from Florida public records (Sunbiz document L14000094158; contractor licence CAC1813632) on 10
+    September 2026. <b>The 20 hours a week of administration and the statement that the business cannot
+    currently take on more work are as reported by Geoff Byam and have not been independently
+    verified.</b> <b>No revenue, call volume, contract count, ranking position or return figure is
+    forecast anywhere in this document</b>, and no claim is made about what any work described here
+    would produce.
+  </div>
+</footer>
+</body></html>
